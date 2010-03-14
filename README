@@ -26,7 +26,7 @@ class X
 end
 
 
-X.first.relations - all relations records (records belong to each other in both ways)
+X.first.relations - all relations records (records belong to each other in both ways, retrieved in one sql query)
 X.first.relations_x - so-called x-relations (one record belongs to other in one way)
 X.first.relations_y - so-called y-relations (one record belongs to other in other way)
 
