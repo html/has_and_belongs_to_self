@@ -1,0 +1,74 @@
+HasAndBelongsToSelf
+===================
+
+I needed functionality of so called "friends", when record of table X has many records of the same table (X).
+Needed functionality is present in this plugin. 
+
+To use it create migration
+
+class CreateXRelations
+  def self.up
+    create_table :x_relations do
+      t.integer :x_id
+      t.integer :y_id
+    end
+  end
+
+  def self.down
+    drop_table :x_relations
+  end
+end
+
+and put one string to your class to make it look like
+
+class X
+  has_and_belongs_to_self
+end
+
+
+X.first.relations - all relations records
+X.first.relations_x - so-called x-relations
+X.first.relations_y - so-called y-relations
+
+Migration
+=========
+  currently you can set other table name but columns x_id and y_id are required
+
+Syntax
+======
+
+There is an alias for has_and_belongs_to_self
+
+Following examples running ok
+
+class X
+  has_and_belongs_to_its :friends
+  # need to create table "x_friends"
+  # X.first.friends - all relations records
+  # X.first.relations_x - x-relations
+  # X.first.relations_y - y-relations
+end
+
+class X
+  has_and_belongs_to_self :join_table => "test"
+  # need to create table "test"
+  # X.first.relations - all relations records
+  # X.first.relations_x - x-relations
+  # X.first.relations_y - y-relations
+end
+
+class X
+  has_and_belongs_to_self :test1, :join_table => "test2"
+  # need to create table "test2"
+  # X.first.test1 - all relations records
+  # X.first.relations_x - x-relations
+  # X.first.relations_y - y-relations
+end
+
+Following example is wrong
+
+class X
+  has_and_belongs_to_its :join_table => "test"
+end
+
+Copyright (c) 2010 [name of plugin creator], released under the MIT license
