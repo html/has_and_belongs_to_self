@@ -50,6 +50,14 @@ class X
 end
 
 class X
+  has_and_belongs_to_its :friends, :join_table => "xxx"
+  # need to create table "xxx"
+  # X.first.friends - all relations records
+  # X.first.relations_x - x-relations
+  # X.first.relations_y - y-relations
+end
+
+class X
   has_and_belongs_to_self :join_table => "test"
   # need to create table "test"
   # X.first.relations - all relations records
