@@ -8,7 +8,7 @@ To use it create migration
 
 class CreateXRelations
   def self.up
-    create_table :x_relations do
+    create_table :x_relations, :id => false do |t|
       t.integer :x_id
       t.integer :y_id
     end
