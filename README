@@ -79,4 +79,4 @@ class X
   has_and_belongs_to_its :join_table => "test"
 end
 
-Copyright (c) 2010 [name of plugin creator], released under the MIT license
+Copyright (c) 2010 Olexiy Zamkoviy, released under the MIT license
